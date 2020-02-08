@@ -30,23 +30,21 @@ def minimax(board, turn, index):
                 temp = copy_board(board)
                 temp[i][j] = turn
                 children.append(temp)
-                #print('<temp>')
-                #print_board(temp)
-                #print('</temp>')
                 new_positions.append([i,j])
 
-    #recurse
+    #set next turn
     next_turn = ''
     if turn is 'X':
         next_turn = 'O'
     else:
         next_turn = 'X'
 
+    #recurse
     for i in range(len(children)):
         temp_score = minimax(children[i], next_turn, index)
         scores.append(temp_score)
 
-    #get min score if on cpu turn, vice versa
+    #get max score if on max turn, vice versa
     if turn is 'X':
         cur_score = min(scores)
         cur_score_ind = scores.index(cur_score)
@@ -54,11 +52,9 @@ def minimax(board, turn, index):
         cur_score = max(scores)
         cur_score_ind = scores.index(cur_score)
 
-    #index = new_positions[cur_score_ind]
+    #set position of best move
     index[0] = new_positions[cur_score_ind][0]
     index[1] = new_positions[cur_score_ind][1]
-    #print(index)
-    #print_board(children[cur_score_ind])
 
     return cur_score
 
@@ -90,26 +86,8 @@ def player_turn(board):
     return
 
 def cpu_turn(board):
-    '''
-    for b in board:
-        for i in range(3):
-            if (b[i] == ' '):
-                b[i] = 'O'
-                return
-    '''
-    '''
-    i = randint(0,2)
-    j = randint(0,2)
-    while board[i][j] is not ' ':
-        i = randint(0,2)
-        j = randint(0,2)
-        continue
-    board[i][j] = 'O'
-    '''
     pos = [0,0]
     minimax(board, 'O', pos)
-    #print(pos)
-    #print("^pos")
     board[pos[0]][pos[1]] = 'O'
     return
 
@@ -158,14 +136,6 @@ def game_over(board):
         winner = 'X'
         game_over = True
 
-    '''
-    if (game_over and winner is not ''):
-        print_board(board)
-        print("~~~ ", winner, " wins! ~~~")
-    elif (game_over and winner is ''):
-        print_board(board)
-        print("--- It's a Draw! ---")
-    '''
     return game_over, winner
 
 
