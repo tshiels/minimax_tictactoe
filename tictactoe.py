@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from random import randint
+
 
 def copy_board(board):
     return [x[:] for x in board]
