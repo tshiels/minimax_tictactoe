@@ -13,9 +13,9 @@ def minimax(board, turn, index):
     endgame, winner = game_over(board)
     #reached terminal node, return score
     if endgame:
-        if winner is 'O':
+        if winner == 'O':
             return 1
-        elif winner is 'X':
+        elif winner == 'X':
             return -1
         else:
             return 0
@@ -34,7 +34,7 @@ def minimax(board, turn, index):
 
     #set next turn
     next_turn = ''
-    if turn is 'X':
+    if turn == 'X':
         next_turn = 'O'
     else:
         next_turn = 'X'
@@ -45,7 +45,7 @@ def minimax(board, turn, index):
         scores.append(temp_score)
 
     #get max score if on max turn, vice versa
-    if turn is 'X':
+    if turn == 'X':
         cur_score = min(scores)
         cur_score_ind = scores.index(cur_score)
     else:
@@ -160,10 +160,10 @@ def main():
             cpu_turn(board)
         turn += 1
     endgame, winner = game_over(board)
-    if (game_over(board)[1] is not ''):
+    if (game_over(board)[1] != ''):
         print_board(board)
         print("~~~ ", game_over(board)[1], " wins! ~~~")
-    elif (game_over(board)[1] is ''):
+    elif (game_over(board)[1] == ''):
         print_board(board)
         print("--- It's a Draw! ---")
 
