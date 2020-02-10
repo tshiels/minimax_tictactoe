@@ -159,7 +159,7 @@ def main():
         else:
             cpu_turn(board)
         turn += 1
-    endgame, winner = game_over(board)
+
     if (game_over(board)[1] != ''):
         print_board(board)
         print("~~~ ", game_over(board)[1], " wins! ~~~")
