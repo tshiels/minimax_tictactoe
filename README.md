@@ -5,4 +5,5 @@ The minimax algorithm generates a tree of children states for a given game state
 the computer wins, -1 if the human wins, and 0 for a draw. 
 
 Instructions to run:
+
 python3 tictactoe.py
